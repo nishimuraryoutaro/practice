@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('memos', function (Blueprint $table) {
+        Schema::create('tags', function (Blueprint $table) {
             $table->unsignedBigInteger('id', true);//BigInterger桁数の大きい,unsined -+がない
-            $table->longText('content');
+            $table->string('name');
             $table->unsignedBigInteger('user_id');
             $table->softdeletes();//論理削除delete_atを自動生成
             //データベースにupdate_at,create_atされた時間//更新時に値が入るようにDB::rawで直接
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('memos');
+        Schema::dropIfExists('tags');
     }
 };
